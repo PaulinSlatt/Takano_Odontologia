@@ -1,0 +1,105 @@
+.consulta {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/assets/banner.jpg') center/cover no-repeat;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+
+.container {
+    width: 100%;
+    margin-top: 40px;
+    margin-left: 40px;
+    
+}
+
+.container2 {
+    width: 100%;
+    margin-top: 40px;
+    margin-left: 40px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h3 {
+        color: #000000;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+}
+
+
+h2 {
+    color: white;
+    font-size: 40px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    margin-left: 40px;
+}
+
+h3 {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.txt {
+    margin-bottom: 10px;
+}
+
+.form_consulta {
+    width: 50%;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 140px;
+    margin-right: 150px;
+    color: #ffffff;
+    padding: 120px;
+    border-radius: 10px;
+    width: 120vh;
+
+}
+
+#agendar {
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 7px;
+}
+
+
+button {
+    padding: 10px 20px;
+    width: 130px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    margin-left: 160px;
+}
