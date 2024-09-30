@@ -54,6 +54,7 @@ th {
 .coluna {
     flex: 1;
     margin: 0 20px;
+    
 }
 
 .coluna p {
@@ -74,12 +75,12 @@ th {
     color: #666;
 }
 
-.linha-vertical {
-    width: 2px;
-    background-color: #ff0000;
-    margin: 0 20px;
-    display: inline-block;
-    height: 100%; 
-    align-self: stretch;
-   
+.vertical-hr {
+    position: relative; 
+    z-index: 1; 
+    color: rgb(177, 177, 177);
+    transform: rotate(180deg); 
+    transform-origin: center;
+    margin: 50px;
+    margin-top: 0;
 }
