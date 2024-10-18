@@ -1,0 +1,90 @@
+.fale-conosco{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    background-color: #f2f2f2;
+}
+
+.titulo{
+    color: #303031;
+    font-size: 50px;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: bold;
+    margin-top: 140px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 20px;
+    max-width: 900px;
+    margin: 50px auto; 
+}
+
+.coluna {
+    flex: 1;
+    margin: 0 20px;
+    
+}
+
+.coluna p {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+    color: #666;
+    line-height: 1.7; 
+}
+
+.esq {
+    text-align: justify;
+    color: #666;
+}
+
+.dir {
+    text-align: justify;
+    color: #666;
+}
+
+.vertical-hr {
+    position: relative; 
+    z-index: 1; 
+    color: rgb(177, 177, 177);
+    transform: rotate(180deg); 
+    transform-origin: center;
+    margin: 50px;
+    margin-top: 0;
+}
+
+h3{
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #019ace;
+    background-color: white;
+    transition: background-color 0.3s;
+}
+
+.whatsapp-button:hover {
+    background-color: #f0f0f0;
+}
+
+.whatsapp-button i {
+    margin-right: 8px;
+    font-size: 20px;
+    color: #019ace;
+}
+

@@ -64,3 +64,10 @@
     height: 140px;
     width: 140px;
 }
+
+.separator {
+    border: none;
+    height: 10px;
+    background: linear-gradient(to right, #666666 0%, #666666 40%, #dddddd 40%, #dddddd 60%, #666666 60%, #666666 100%);
+    margin:0;
+}
