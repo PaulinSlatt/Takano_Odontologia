@@ -56,6 +56,43 @@
     line-height: 1.5;
 }
 
+.numeros{
+    background-color: #dbdbdb;
+    height: 30vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    top: -120;
+
+    .table {
+       margin-top: 40px;
+        font-size: 240px;
+        display: flex;
+        justify-content: center; 
+        gap: 50px; 
+      
+    
+    }
+    
+    th {
+        color: #373b4d; 
+        font-size: 65px;
+        padding: 20px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .p-table{
+        font-weight: 100;
+        font-size: 17px;
+        color: #373b4d;
+        margin-top: 60px;
+        
+    }
+}
+
+
+
 
 @media (max-width: 768px) {
     .container {
