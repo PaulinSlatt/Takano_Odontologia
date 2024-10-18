@@ -5,11 +5,12 @@ import { FooterComponent } from './componentes/footer/footer.component';
 import { AgendeConsultaComponent } from './componentes/agende-consulta/agende-consulta.component';
 import { QuemSomosComponent } from './componentes/quem-somos/quem-somos.component';
 import { NossosServicosComponent } from './componentes/nossos-servicos/nossos-servicos.component';
+import { DentistasComponent } from "./componentes/dentistas/dentistas.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, AgendeConsultaComponent, QuemSomosComponent, NossosServicosComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, AgendeConsultaComponent, QuemSomosComponent, NossosServicosComponent, DentistasComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
