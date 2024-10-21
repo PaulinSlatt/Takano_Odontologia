@@ -25,7 +25,9 @@
     max-width: 900px;
     margin: 50px auto; 
 }
-
+.container iframe{
+    height: 30vh;
+}
 .coluna {
     flex: 1;
     margin: 0 20px;
