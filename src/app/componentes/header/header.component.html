@@ -1,21 +1,24 @@
 <header class="header">
     <div>
-        <img  class="logo"src="/assets/logo.png" alt="logo">
+      <img class="logo" src="/assets/logo.png" alt="logo">
     </div>
     <nav class="nav">
-        <ul class="ul_nav">
-            <li class="menu_item">
-                <a class="nav__link" routerLink="/" fragment="quem_somos">Quem somos</a>
-            </li>
-            <li class="menu_item">
-                <a class="nav__link" href="#">Tratamentos</a>
-            </li>
-            <li class="menu_item">
-                <a class="nav__link" href="#">Equipe</a>
-            </li>
-            <li class="menu_item">
-                <a class="nav__link" href="#">Agende sua avaliação</a>
-            </li>
-        </ul>   
+      <ul class="ul_nav">
+        <li class="menu_item">
+          <a class="nav__link" (click)="scrollToSection('quem-somos')">Quem somos</a>
+        </li>
+        <li class="menu_item">
+          <a class="nav__link" (click)="scrollToSection('agende-consulta')">Agende sua consulta</a>
+        </li>
+        <li class="menu_item">
+          <a class="nav__link" (click)="scrollToSection('nossos-servicos')">Nossos serviços</a>
+        </li>
+        <li class="menu_item">
+          <a class="nav__link" (click)="scrollToSection('dentistas')">Dentistas</a>
+        </li>
+        <li class="menu_item">
+          <a class="nav__link" (click)="scrollToSection('fale-conosco')">Fale conosco</a>
+        </li>
+      </ul>   
     </nav>
-</header>
+  </header>
