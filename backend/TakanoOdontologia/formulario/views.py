@@ -1,31 +1,50 @@
 from django.shortcuts import render
 import json
-import django.core.mail import send_email
-import django.http import JsonResponse
-import django.views.decorators.csrf import csrf_exempt
+from django.core.mail import send_email
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import Contato
+
+
 # Create your views here.
 
 
 @csrf_exempt
 def enviar_agenda(request):
-    if request.method == 'POST':
-        dados = json.loads(request.body)
-        nome = dados.get('nome')
-        email = dados.get('email')
-        phone_number = dados.get('telefone')
-        primeira_consulta = dados.get('primeira_consulta')
-        tipo_consulta = dados.get('tipo_consulta')
-        horario_preferencia = dados.get('horario_preferencia')
+     if request.method == 'POST':
+        try:
+            # Parse os dados do formulário
+            data = json.loads(request.body)
+            
+            # Crie o registro no banco de dados
+            contato = Contato.objects.create(
+                primeira_consulta=data.get('primeira_consulta') == 'sim',
+                tipo_consulta=data.get('tipo_consulta'),
+                horario_preferencia=data.get('horario_preferencia'),
+            )
+            
+            # Envio de e-mail
+            enviar_email(contato)
 
-        send_email(
-            f'Agendamento solicitado: {nome}',
-            f'nome: {nome} ',
-            f'email: {email}',
-            f'Telefone de contato: {phone_number}',
-            f'Primeira consulta? {primeira_consulta}',
-            f'Tipo de consulta: {tipo_consulta}',
-            f'Horario preferencial: {horario_preferencia}'
-        )
+            return JsonResponse({'message': 'Consulta agendada com sucesso!'}, status=201)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=400)
+     return JsonResponse({'error': 'Método não permitido'}, status=405)
 
-        return JsonResponse({'status': 'sucesso'}, status=200)
-    return JsonResponse({'error': 'Método não permitido'}, status=405)
+
+def enviar_email(contato):
+    assunto = "Confirmação de Agendamento"
+    mensagem = f"""
+    Olá, seu agendamento foi confirmado com sucesso! Aqui estão os detalhes:
+    
+    - Primeira consulta: {'Sim' if contato.primeira_consulta else 'Não'}
+    - Tipo de consulta: {contato.tipo_consulta}
+    - Horário preferido: {contato.horario_preferencia}
+    """
+    send_email(
+        assunto,
+        mensagem,
+        'seu_email@gmail.com',
+        ['email_cliente@example.com'],  # Ajuste com o e-mail real do cliente
+        fail_silently=False,
+    )

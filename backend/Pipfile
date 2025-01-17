@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 django-phonenumber-field = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
