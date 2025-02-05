@@ -14,14 +14,14 @@ main{
     width: 100%;
     margin-top: 40px;
     margin-left: 40px;
-    
+
 }
 
 .pre_tratamentos{
-    height: 30vh; 
+    height: 30vh;
     display: flex;
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
     top: -120;
 }
 
@@ -39,15 +39,15 @@ main{
     border-style: solid;
     border-top-width: 0px;
     border-right-width: 0px;
-    border-left-width: 0px; 
+    border-left-width: 0px;
     border-bottom-width: 10px;
-    
+
     h3 {
         color: rgb(102, 102, 102);
         font-size: 32px;
         margin-bottom: 10px;
     }
-    
+
 }
 
 .borda_container2{
@@ -129,7 +129,14 @@ button {
     width: 130px;
     border: none;
     border-radius: 15px;
-    color: white;
+    color: #1C1C1A;
     cursor: pointer;
     margin-left: 160px;
+    background-color: #FFF;
+}
+
+@media (max-width: 1500px){
+  button {
+    margin-bottom: 25px;
+  }
 }
