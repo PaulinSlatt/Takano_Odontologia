@@ -1,0 +1,71 @@
+
+<!-- email_template.html -->
+<html>
+  <head>
+    <style>
+      /* Aqui você pode incluir estilos CSS para personalizar o e-mail */
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+      h2 {
+        color: #2a9d8f;
+      }
+      .detalhes {
+        margin-top: 20px;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      .detalhes th, .detalhes td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+      .detalhes th {
+        background-color: #f4f4f4;
+      }
+      .botao {
+        background-color: #2a9d8f;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Confirmação de Agendamento</h2>
+    <p>Olá, o agendamento de <strong>{{ contato.nome }}</strong> foi confirmado com sucesso! Aqui estão os detalhes:</p>
+
+    <table class="detalhes">
+      <tr>
+        <th>Nome</th>
+        <td>{{contato.nome}}</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{contato.email}}</td>
+      </tr>
+      <tr>
+        <th>Telefone</th>
+        <td>{{contato.phone_number}}</td>
+      </tr>
+      <tr>
+        <th>Primeira consulta</th>
+        <td>{% if contato.primeira_consulta %}Sim{% else %}Não{% endif %}</td>
+      </tr>
+      <tr>
+        <th>Tipo de consulta</th>
+        <td>{{ contato.tipo_consulta }}</td>
+      </tr>
+      <tr>
+        <th>Horário preferido</th>
+        <td>{{ contato.horario_preferencia }}</td>
+      </tr>
+    </table>
+
+    <!-- <a href="#" class="botao">Ver Detalhes</a> -->
+  </body>
+</html>
