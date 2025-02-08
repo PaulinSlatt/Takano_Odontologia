@@ -1,0 +1,79 @@
+<main>
+    <section class="consulta">
+             
+            <div class="container">
+                
+                <h2>Venha fazer uma avaliação do seu <br>
+                     caso para cuidarmos da sua saúde <br> 
+                     bucal</h2>
+            </div>
+    
+            <div class="form_consulta">
+                <h3>Agende sua avaliação</h3>
+                <form [formGroup]="agendamentoForm" (ngSubmit)="onSubmit()">
+                    
+                    <div class="content-input">
+                        <label for="nome">Nome:</label> 
+                        <input type="text" formControlName="nome" id="nome" name="nome" required>
+                    </div >
+                    
+                    <div class ="content-input">
+                        <label for="email">Email:</label>
+                        <input type="email" formControlName="email" id="email" name="email" required>
+                    </div>
+                    <div>
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" formControlName="phone_number" id="telefone" name="phone_number" required>
+                    </div>
+                    <div class="content-input">
+
+                        <label for="primeira_consulta">É sua primeira consulta?</label>
+                        <select id="primeira_consulta" formControlName="primeira_consulta" class="agendar"  name="primeira_consulta"required>
+                            <option value="" disabled selected>Selecione...</option>
+                            <option value="true">Sim, é minha primeira consulta</option>
+                            <option value="false">Não, já fiz consulta outra vez</option>
+                        </select>
+                    </div>
+                    <div class="content-input">
+
+                        <label for="tipo_consulta">Tipo de consulta</label>
+                        <select id="tipo_consulta" formControlName="tipo_consulta" class="agendar" name="tipo_consulta"required>
+                            <option value="" disabled selected>Selecione...</option>
+                            <option value="Avaliação Geral">Avaliação geral</option>
+                            <option value="Emergencial">Emergencial</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="content-input">
+
+                        <label for="horario_preferencia">Selecione o horário de sua preferencia</label>
+                        <select id="horario_preferencia" formControlName="horario_preferencia" class="agendar" name="horario_preferencia" required>
+                            <option value="" disabled selected>Selecione...</option>
+                            <option value="Manhã">Manhã</option>
+                            <option value="Tarde">Tarde</option>
+                            <option value="Noite">Noite</option>
+                        </select>
+                    </div>
+                    <div class="content-btn">
+
+                        <button type="submit">Enviar</button> 
+                    </div>
+
+                    <div *ngIf="avisoSucesso" class="alert alert-success">
+                        {{ avisoSucesso }}
+                    </div>
+                    <div *ngIf="avisoErro" class="alert alert-error">
+                        {{ avisoErro }}
+                    </div>
+                </form>
+            </div>
+    </section>
+    <section class="pre_tratamentos">
+        <div  class="container2">
+            <h3> <span class="light-text"> TRATAMENTO </span><br><span class="bold-text">ODONTOLOGICO</span></h3>
+            <h3> <span class="light-text"> ESTETICA  </span><br><span class="bold-text">DENTAL</span> </h3>
+            <h3> <span class="light-text"> CUIDADOS</span> <br><span class="bold-text">EMERGENCIAIS</span> </h3>    
+        </div>  
+    </section> 
+</main>
+
