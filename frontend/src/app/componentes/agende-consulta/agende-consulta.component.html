@@ -12,12 +12,12 @@
                 <h3>Agende sua avaliação</h3>
                 <form [formGroup]="agendamentoForm" (ngSubmit)="onSubmit()">
                     
-                    <div class="txt">
+                    <div class="content-input">
                         <label for="nome">Nome:</label> 
                         <input type="text" formControlName="nome" id="nome" name="nome" required>
                     </div >
-    
-                    <div class ="txt">
+                    
+                    <div class ="content-input">
                         <label for="email">Email:</label>
                         <input type="email" formControlName="email" id="email" name="email" required>
                     </div>
@@ -25,13 +25,17 @@
                         <label for="telefone">Telefone:</label>
                         <input type="tel" formControlName="phone_number" id="telefone" name="phone_number" required>
                     </div>
-                   
+                    <div class="content-input">
+
                         <label for="primeira_consulta">É sua primeira consulta?</label>
                         <select id="primeira_consulta" formControlName="primeira_consulta" class="agendar"  name="primeira_consulta"required>
                             <option value="" disabled selected>Selecione...</option>
                             <option value="true">Sim, é minha primeira consulta</option>
                             <option value="false">Não, já fiz consulta outra vez</option>
                         </select>
+                    </div>
+                    <div class="content-input">
+
                         <label for="tipo_consulta">Tipo de consulta</label>
                         <select id="tipo_consulta" formControlName="tipo_consulta" class="agendar" name="tipo_consulta"required>
                             <option value="" disabled selected>Selecione...</option>
@@ -39,6 +43,9 @@
                             <option value="Emergencial">Emergencial</option>
                             <option value="Outros">Outros</option>
                         </select>
+                    </div>
+                    <div class="content-input">
+
                         <label for="horario_preferencia">Selecione o horário de sua preferencia</label>
                         <select id="horario_preferencia" formControlName="horario_preferencia" class="agendar" name="horario_preferencia" required>
                             <option value="" disabled selected>Selecione...</option>
@@ -46,8 +53,11 @@
                             <option value="Tarde">Tarde</option>
                             <option value="Noite">Noite</option>
                         </select>
-                    
-                    <button type="submit">Enviar</button> 
+                    </div>
+                    <div class="content-btn">
+
+                        <button type="submit">Enviar</button> 
+                    </div>
 
                     <div *ngIf="avisoSucesso" class="alert alert-success">
                         {{ avisoSucesso }}
