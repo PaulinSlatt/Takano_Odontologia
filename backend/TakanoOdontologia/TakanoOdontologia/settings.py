@@ -13,9 +13,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 from decouple import config
+from corsheaders.defaults import default_headers
+from dotenv import load_dotenv
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -25,12 +27,12 @@ SECRET_KEY = os.getenv('SECRET-KEY', 'valor-para-desenvolvimento')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-# ALLOWED_HOSTS = [
-#     h.strip() for h in os.getenv('ALLOWED_HOSTS', '').split(',')
-#     # if h.strip()
-# ]
 
-ALLOWED_HOSTS = ['127.0.0.1']
+
+ALLOWED_HOSTS = ['127.0.0.1',
+                     'localhost',
+                     'takanoodontologia.com.br',
+                     'takanoodontologia']
 # Application definition
 
 INSTALLED_APPS = [
@@ -47,20 +49,27 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:4200',  # URL do Angular
 ]
-
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'x-recaptcha-token',  # Adicione isso se estiver usando header customizado
+]
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:4200',
+    'https://takanoodontologia.com.br',
+    'https://takanoodontologia'
+]
 ROOT_URLCONF = 'TakanoOdontologia.urls'
 
 TEMPLATES = [
@@ -84,14 +93,32 @@ WSGI_APPLICATION = 'TakanoOdontologia.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('POSTGRES_HOST'),
+        'PORT': os.getenv('POSTGRES_PORT'),
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        },
     }
 }
-
+# DATABASES = {
+#     'default': {
+#         'USER': os.getenv('POSTGRES_USER', 'DB_USER'),
+#         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'DB_PASSWORD'),
+#         'HOST': os.getenv('POSTGRES_HOST', 'DB_HOST'),
+#         'PORT': os.getenv('POSTGRES_PORT', '5432'),
+#         'NAME': 'meubanco',
+#         # 'ENGINE': 'django.db.backends.postgresql',
+#         'OPTIONS': {
+#             'client_encoding': 'UTF8',
+#         },
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -157,3 +184,13 @@ EMAIL_PORT = os.getenv('EMAIL_PORT')
 X_FRAME_OPTIONS = 'DENY'  # Protege contra clickjacking
 SECURE_BROWSER_XSS_FILTER = True  # Protege contra XSS
 SECURE_CONTENT_TYPE_NOSNIFF = True  # Previne MIME-type sniffing
+
+
+RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY', 'RECAPTCHA_SECRET_KEY')
+
+
+print("POSTGRES_PASSWORD:", os.getenv('POSTGRES_PASSWORD'))
+print("POSTGRES_USER:", os.getenv('POSTGRES_USER'))
+print("POSTGRES_DB:", os.getenv('POSTGRES_DB'))
+print("POSTGRES_HOST:", os.getenv('POSTGRES_HOST'))
+print("POSTGRES_PORT:", os.getenv('POSTGRES_PORT'))

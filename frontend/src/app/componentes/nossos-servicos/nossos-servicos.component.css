@@ -17,7 +17,6 @@
   margin-top: 140px;
   margin-bottom: 40px;
   text-align: center;
-
 }
 
 .container {
@@ -90,10 +89,56 @@
       color: #373b4d;
     }
   }
-
 }
+
+/* Responsividade */
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  
+  .titulo {
+    font-size: 36px;
+    margin-top: 100px;
+    margin-bottom: 30px;
+  }
+  
+  .numeros {
+    height: auto;
+    padding: 30px 0;
+    
+    .content-infos {
+      flex-direction: column;
+      gap: 30px;
+      
+      .title-exp {
+        font-size: 45px;
+      }
+      
+      .p-table {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .titulo {
+    font-size: 30px;
+    margin-top: 80px;
+  }
+  
+  .servico {
+    width: 220px;
+  }
+  
+  .container {
+    gap: 40px;
+    padding: 10px;
+  }
+  
+  .numeros .content-infos .title-exp {
+    font-size: 36px;
   }
 }

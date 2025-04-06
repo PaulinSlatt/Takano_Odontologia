@@ -63,3 +63,4 @@ media
 .angular
 .env
 .vscode
+/staticfiles/

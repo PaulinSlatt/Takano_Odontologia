@@ -21,7 +21,7 @@ export class AppComponent implements AfterViewInit {
   title = 'Takano_Odontologia';
   
   constructor(private router: Router) {}
-
+ 
   ngAfterViewInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {

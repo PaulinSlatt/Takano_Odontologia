@@ -4,24 +4,24 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AgendamentoService } from '../../agendamento.service';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { RecaptchaModule } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-agende-consulta',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, ReactiveFormsModule],
+  imports: [CommonModule, RecaptchaModule, ReactiveFormsModule],
   templateUrl: './agende-consulta.component.html',
   styleUrl: './agende-consulta.component.css'
 })
 
 
-
+  
 export class AgendeConsultaComponent implements OnInit  {
   agendamentoForm!: FormGroup;
   mensagem: string | null = null;
   avisoSucesso: string | null = null;  
   avisoErro: string | null = null;  
-
+  recaptchaToken: string = '';
   constructor(private fb: FormBuilder, private agendamentoService: AgendamentoService) {}
 
 
@@ -37,14 +37,22 @@ export class AgendeConsultaComponent implements OnInit  {
     }
 
 
-
+    onCaptchaResolved(captchaResponse: string | null) {
+      if (captchaResponse) {
+        // Handle the captcha response
+        this.recaptchaToken = captchaResponse;
+        console.log(captchaResponse);
+    } else {
+        console.error('Captcha response is null');
+    }
+    }
 
   onSubmit(): void {
     console.log('Formulário enviado!');
 
     if (this.agendamentoForm.valid) {
       
-      this.agendamentoService.agendarConsulta(this.agendamentoForm.value).subscribe(
+      this.agendamentoService.agendarConsulta(this.agendamentoForm.value, this.recaptchaToken).subscribe(
         response => {
           this.avisoSucesso = 'Consulta agendada com sucesso! Entraremos em contato em breve para confirmação';
           setTimeout(() => {
@@ -52,7 +60,15 @@ export class AgendeConsultaComponent implements OnInit  {
           }, 10000);
         },
         error => {
-          this.avisoErro = 'Erro ao agendar consulta. Tente novamente.';
+
+          if (error = 429) {
+            this.avisoErro = 'Limite de agendamentos atingido, ou Captcha inválido. Tente novamente mais tarde.';
+          }
+          else if (error = 400) {
+            this.avisoErro = 'Erro ao agendar consulta. Tente novamente';
+          
+          }
+            console.error(error);
           setTimeout(() => {
             this.avisoErro = null;
           }, 10000);

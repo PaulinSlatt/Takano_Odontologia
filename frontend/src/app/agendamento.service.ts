@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -12,7 +12,12 @@ export class AgendamentoService {
   constructor(private http: HttpClient) { }
 
   // Metodo do serviço de agendamento
-  agendarConsulta(dados: any): Observable<any>{
-    return this.http.post(this.apiUrl, dados)
+  agendarConsulta(dados: any, recaptchaToken: string): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-ReCaptcha-Token': recaptchaToken
+    });
+    
+    return this.http.post(this.apiUrl, dados, { headers: headers });
   }
 }
