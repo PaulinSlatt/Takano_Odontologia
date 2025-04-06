@@ -9,6 +9,10 @@ django-cors-headers = "*"
 django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
 gunicorn = "*"
 python-decouple = "*"
+psycopg = "*"
+psycopg2-binary = "*"
+requests = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

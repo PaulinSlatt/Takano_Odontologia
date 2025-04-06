@@ -14,7 +14,6 @@ main {
   width: 100%;
   margin-top: 40px;
   margin-left: 40px;
-
 }
 
 .pre_tratamentos {
@@ -48,7 +47,6 @@ main {
     font-size: 32px;
     margin-bottom: 10px;
   }
-
 }
 
 .borda_container2 {
@@ -88,7 +86,6 @@ textarea {
   border-radius: 5px;
 }
 
-
 form {
   display: flex;
   flex-direction: column;
@@ -113,7 +110,6 @@ form {
   padding: 70px;
   border-radius: 10px;
   width: 120vh;
-
 }
 
 .content-input{
@@ -129,7 +125,6 @@ form {
   border-radius: 10px;
   padding: 7px;
 }
-
 
 button {
     padding: 10px 20px;
@@ -159,13 +154,105 @@ button {
     background-color: rgb(243, 148, 148);
     color: #000000;
     border: 1px solid #e6c3c3;
-
   }
-  
 
-
+/* Responsividade */
 @media (max-width: 1500px) {
   button {
     margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .consulta {
+    flex-direction: column;
+    height: auto;
+    padding: 20px 0;
+  }
+  
+  .form_consulta {
+    width: 80%;
+    margin-top: 80px;
+    padding: 40px;
+    width: auto;
+    max-width: 90%;
+  }
+  
+  .container2 {
+    width: 90%;
+    margin-left: 20px;
+    padding: 5vh 5vh 3vh 5vh;
+  }
+  
+  h2 {
+    font-size: 32px;
+    margin-left: 20px;
+    text-align: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .container {
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+  
+  .form_consulta {
+    padding: 30px;
+    font-size: 16px;
+    margin-top: 60px;
+  }
+  
+  .container2 {
+    flex-direction: column;
+    padding: 5vh 3vh 3vh 3vh;
+    margin-left: 10px;
+    
+    h3 {
+      font-size: 24px;
+    }
+  }
+  
+  h2 {
+    font-size: 28px;
+    margin-top: 70px;
+    margin-left: 10px;
+  }
+  
+  button {
+    width: 100%;
+  }
+  
+  .pre_tratamentos {
+    height: auto;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form_consulta {
+    padding: 20px;
+    font-size: 14px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  h3 {
+    font-size: 18px;
+  }
+  
+  .container2 {
+    width: 95%;
+    margin-left: 5px;
+    padding: 3vh 2vh 2vh 2vh;
+  }
+  
+  .alert {
+    font-size: 14px;
+    padding: 10px;
   }
 }

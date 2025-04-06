@@ -2,10 +2,12 @@ from django.shortcuts import render
 import json
 from django.core.mail import send_mail
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from .models import Contato
 from django.template.loader import render_to_string  # Para usar templates HTML
-
+from django.conf import settings
+import requests
+import json
 
 # Create your views here.
 
@@ -13,7 +15,25 @@ from django.template.loader import render_to_string  # Para usar templates HTML
 @csrf_exempt
 def enviar_agenda(request):
      if request.method == 'POST':
+        recaptcha_token = request.headers.get('x-Recaptcha-token')
+        print('token:', recaptcha_token)  # Log para verificar o token do reCAPTCHA
+         # Valida o token com o Google
+        recaptcha_secret = settings.RECAPTCHA_SECRET_KEY
+        print('secret', recaptcha_secret)
 
+        recaptcha_response = requests.post(
+            'https://www.google.com/recaptcha/api/siteverify',
+            data={
+                'secret': settings.RECAPTCHA_SECRET_KEY,
+                'response': recaptcha_token
+            }
+          )
+
+        result = recaptcha_response.json()
+        print(result)  # Log para verificar a resposta do Google
+        if not result.get('success'):
+             return JsonResponse({'error': 'ReCAPTCHA inválido.'}, status=429)
+        print("ReCAPTCHA validado com sucesso!")
         try:
             # Parse os dados do formulário
             data = json.loads(request.body)
@@ -68,3 +88,12 @@ def enviar_email(contato):
         print('Erro ao enviar e-mail:', str(e))
         return "Erro ao enviar e-mail"
     
+
+
+def validar_captcha(token):
+    secret = 'SUA_SECRET_KEY'
+    response = requests.post(
+        'https://www.google.com/recaptcha/api/siteverify',
+        data={'secret': secret, 'response': token}
+    )
+    return response.json().get('success', False)

@@ -54,6 +54,10 @@
                             <option value="Noite">Noite</option>
                         </select>
                     </div>
+                    <re-captcha
+                        siteKey="6LdoQwsrAAAAANfkyayLRApyYalQ2LLujHHtexGE"
+                        (resolved)="onCaptchaResolved($event)">
+                    </re-captcha>
                     <div class="content-btn">
 
                         <button type="submit">Enviar</button> 

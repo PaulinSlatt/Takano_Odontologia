@@ -90,3 +90,71 @@ h3{
     color: #019ace;
 }
 
+/* Responsividade */
+@media (max-width: 992px) {
+    .container {
+        max-width: 700px;
+        padding: 15px;
+    }
+    
+    .coluna p {
+        font-size: 16px;
+    }
+    
+    h3 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .titulo {
+        font-size: 38px;
+        margin-top: 100px;
+        margin-bottom: 30px;
+    }
+    
+    .container {
+        flex-direction: column;
+        max-width: 90%;
+    }
+    
+    .coluna {
+        margin: 15px 0;
+    }
+    
+    .vertical-hr {
+        display: none;
+    }
+    
+    .container iframe {
+        height: 40vh;
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    .whatsapp-button {
+        font-size: 18px;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo {
+        font-size: 30px;
+        margin-top: 80px;
+    }
+    
+    h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .coluna p {
+        font-size: 15px;
+    }
+    
+    .container iframe {
+        height: 30vh;
+    }
+}
